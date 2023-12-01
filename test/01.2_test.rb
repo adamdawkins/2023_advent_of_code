@@ -14,6 +14,7 @@ class CalibratorTest < Minitest::Test
     assert_equal(42, @calibrator.value("4nineeightseven2"))
     assert_equal(14, @calibrator.value("zoneight234"))
     assert_equal(76, @calibrator.value("7pqrstsixteen"))
+    assert_equal(52, @calibrator.value("xfive79two775eightwohm"))
   end
 
   def test_sum_from_input

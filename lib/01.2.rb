@@ -19,7 +19,7 @@ class Calibrator
   end
 
   def value(string)
-    digits = string.scan(/(\d|one|two|three|four|five|six|seven|eight|nine|ten)/)
+    digits = string.scan(/(?=(\d|one|two|three|four|five|six|seven|eight|nine|ten))/)
     [digits.first, digits.last].flatten.map {|word| word_to_digit(word) }.join.to_i
 
   end
