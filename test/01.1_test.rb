@@ -13,5 +13,12 @@ class CalibratorTest < Minitest::Test
     assert_equal(77, @calibrator.value("treb7uchet"))
   end
 
+  def test_sum_from_input
+    input = %w[
+    1abc2
+    pqr3stu8vwx
+    a1b2c3d4e5f
+    treb7uchet].join("\n")
+    assert_equal(142, Calibrator.new(input).sum)
   end
 end
