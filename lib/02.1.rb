@@ -5,6 +5,28 @@ class Game
     @input = input
     @id = input.match(/Game (\d*)/)[1].to_i
   end
+
+  def draws
+    draw_inputs.map {|draw_input| Draw.new(draw_input) }
+  end
+
+  def max_red
+    draws.max_by(&:red).red
+  end
+
+  def max_green
+    draws.max_by(&:green).green
+  end
+
+  def max_blue
+    draws.max_by(&:blue).blue
+  end
+
+  private
+
+  def draw_inputs
+   input.match(/Game \d+: (.*)/)[1].split(";").map(&:strip)
+  end
 end
 
 class Draw
