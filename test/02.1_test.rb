@@ -7,4 +7,10 @@ class CubeConundrumTest < Minitest::Test
     game = Game.new("Game 1000: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green")
     assert_equal(1000, game.id)
   end
+
+  def test_draw_data
+    assert_equal({ red: 4, green: 0, blue: 3 }, Draw.new("3 blue, 4 red").data)
+    assert_equal({ red: 1, green: 2, blue: 6 }, Draw.new("1 red, 2 green, 6 blue").data)
+    assert_equal({ red: 0, green: 2, blue: 0 }, Draw.new("2 green").data)
+  end
 end
