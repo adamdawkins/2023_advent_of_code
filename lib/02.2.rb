@@ -66,21 +66,13 @@ end
 
 class CubeConundrum
   attr_reader :max, :input
-  def initialize(max:, input:)
+  def initialize(max: nil, input:)
     @max = max
     @input = input
   end
 
-  def possible_by_max_color_games
-    games.filter do |game|
-      [game.max_red <= max[:red],
-       game.max_green <= max[:green],
-       game.max_blue <= max[:blue]].all?
-    end
-  end
-
   def answer
-    possible_by_max_color_games.sum(&:id)
+    games.sum(&:max_power)
   end
 
   def games 
