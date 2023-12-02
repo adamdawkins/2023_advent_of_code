@@ -26,6 +26,8 @@ class Draw
     data[:blue]
   end
 
+  private 
+
   def data
     result = { red: 0, green: 0, blue: 0 }
     input.scan(/((\d+) (\w+))/).map {|a| a.drop(1) }.each do |number, colour|

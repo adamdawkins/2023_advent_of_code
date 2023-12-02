@@ -9,9 +9,9 @@ class CubeConundrumTest < Minitest::Test
   end
 
   def test_draw_data
-    assert_equal({ red: 4, green: 0, blue: 3 }, Draw.new("3 blue, 4 red").data)
-    assert_equal({ red: 1, green: 2, blue: 6 }, Draw.new("1 red, 2 green, 6 blue").data)
-    assert_equal({ red: 0, green: 2, blue: 0 }, Draw.new("2 green").data)
+    assert_equal({ red: 4, green: 0, blue: 3 }, Draw.new("3 blue, 4 red").send(:data))
+    assert_equal({ red: 1, green: 2, blue: 6 }, Draw.new("1 red, 2 green, 6 blue").send(:data))
+    assert_equal({ red: 0, green: 2, blue: 0 }, Draw.new("2 green").send(:data))
   end
 
   def test_draw_colours
