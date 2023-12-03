@@ -57,27 +57,30 @@ class NumbersFromRow
   def initialize(row, y)
     @row = row
     @y = y
+    @min_x = nil
+    @max_x = nil
+    @value = ""
   end
 
   def numbers_from_row
     result = []
-    value = ""
-    min_x = nil
-    max_x = nil
     row.chars.each_with_index do |char, x|
       if char.match?(/\d/)
-        min_x = x if value.empty?
-        value += char
-        max_x = x
+        self.min_x = x if value.empty?
+        self.value += char
+        self.max_x = x
       else
         next if value.empty?
         result << Number.new(value: value.to_i, y:, xs: [min_x, max_x])
-        value = ""
-        min_x = nil
-        max_x = nil
+        self.value = ""
+        self.min_x = nil
+        self.max_x = nil
       end
     end
 
     result
   end
+
+
+  attr_accessor :value, :min_x, :max_x
 end
