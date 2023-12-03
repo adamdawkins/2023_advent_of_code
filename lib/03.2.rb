@@ -76,7 +76,11 @@ class EngineSchematic
   end
 
   def gear?(potential_gear)
-    number_repository.at_coordinates(sanitize_coordinates(potential_gear.adjacent_coordinates)).count == 2
+    gear_numbers(potential_gear).count == 2
+  end
+
+  def gear_numbers(potential_gear)
+    number_repository.at_coordinates(sanitize_coordinates(potential_gear.adjacent_coordinates))
   end
 
   def part_numbers
