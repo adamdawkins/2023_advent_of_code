@@ -27,6 +27,10 @@ class Number
 
     (result - coordinates).select {|y, x| !y.negative? && !x.negative? }
   end
+
+  def to_s
+    "#{value.to_s.rjust(3, " ")}: (#{y.to_s.rjust(3, " ")},#{min_x.to_s.rjust(3, " ")})"
+  end
 end
 
 class EngineSchematic
