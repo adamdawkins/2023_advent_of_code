@@ -47,8 +47,11 @@ class EngineSchematic
     !input[y][x].match?(/\d|\./)
   end
 
-
   def sum; end
+
+  def part_number?(number)
+    number.adjacent_coordinates.map {|c| symbol_at?(c) }.any?
+  end
 end
 
 class NumbersFromRow

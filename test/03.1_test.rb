@@ -60,6 +60,14 @@ class EngineSchematicTest < Minitest::Test
     assert es.symbol_at?([8,5]) # assert *
   end
 
+  def test_part_number?
+    es = EngineSchematic.new(@input)
+    part_number =     Number.new(value: 467, y: 0, xs: [0,2])
+    not_part_number = Number.new(value: 114, y: 0, xs: [5,7])
+    assert es.part_number?(part_number)
+    refute es.part_number?(not_part_number)
+  end
+
   # def test_sum
   #   assert_equal(4361, EngineSchematic.new(@input).sum)
   # end
