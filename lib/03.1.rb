@@ -37,19 +37,12 @@ class EngineSchematic
   def numbers
     result = []
     input.each_with_index do |row, y|
-      result << numbers_from_row(row, y)
+      result << NumbersFromRow.new(row, y).numbers_from_row
     end
     result.flatten.compact
   end
 
   def sum; end
-  
-
-  private 
-
-  def numbers_from_row(row, y)
-    NumbersFromRow.new(row, y).numbers_from_row
-  end
 end
 
 class NumbersFromRow
@@ -60,27 +53,43 @@ class NumbersFromRow
     @min_x = nil
     @max_x = nil
     @value = ""
+    @result = []
   end
 
   def numbers_from_row
-    result = []
     row.chars.each_with_index do |char, x|
       if char.match?(/\d/)
-        self.min_x = x if value.empty?
-        self.value += char
-        self.max_x = x
+        add_to_current_number(char, x)
       else
-        next if value.empty?
-        result << Number.new(value: value.to_i, y:, xs: [min_x, max_x])
-        self.value = ""
-        self.min_x = nil
-        self.max_x = nil
+        save_number
       end
     end
 
-    result
+    self.result
   end
 
+  private
 
-  attr_accessor :value, :min_x, :max_x
+  attr_accessor :value, :min_x, :max_x, :result
+
+  def reset_number
+    self.value = ""
+    self.min_x = nil
+    self.max_x = nil
+  end
+
+  def save_number
+    self.result << number unless value.empty?
+    reset_number
+  end
+
+  def number
+    Number.new(value: value.to_i, y:, xs: [min_x, max_x])
+  end
+
+  def add_to_current_number(char, x)
+    self.min_x = x if value.empty?
+    self.value += char
+    self.max_x = x
+  end
 end
