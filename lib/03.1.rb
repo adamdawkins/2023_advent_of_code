@@ -39,7 +39,7 @@ class EngineSchematic
     input.each do |row|
       result << row.scan(/\d+/)
     end
-    result.flatten.compact.map(&:to_i)
+    result.flatten.compact.map {|number_string| Number.new(value: number_string.to_i, y: 0, xs: [0,0]) }
   end
 
 
