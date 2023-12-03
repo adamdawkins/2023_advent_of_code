@@ -49,6 +49,11 @@ class EngineSchematicTest < Minitest::Test
     assert_equal([0, 0, 2, 2]       , numbers.map(&:y))
     assert_equal([0, 5, 2, 6]       , numbers.map(&:min_x))
     assert_equal([2, 7, 3, 8]       , numbers.map(&:max_x))
+
+    input = ["...=.....423*297.....400....*..999.781.........472...........................................618..........+..*.........=.......#152......315"]
+    numbers = EngineSchematic.new(input).numbers
+    assert_equal([423, 297, 400, 999, 781, 472, 618, 152, 315], numbers.map(&:value))
+
   end
 
   def test_symbol_at?

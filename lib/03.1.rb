@@ -34,10 +34,12 @@ class Number
 end
 
 class EngineSchematic
-  attr_reader :input
+  attr_reader :input, :max_y, :max_x
 
   def initialize(input)
     @input = input
+    @max_y = input.length
+    @max_x = input.first.length
   end
 
   def numbers
@@ -58,7 +60,8 @@ class EngineSchematic
   end
 
   def part_number?(number)
-    number.adjacent_coordinates.select {|y,x| y < input.length } # reject adjacents below the bottom of the inpuct
+    # reject adjacents below the bottom of the input or beyond the far right edge
+    number.adjacent_coordinates.select {|y,x| y < max_y && x < max_x}
       .map {|c| symbol_at?(c) }.any?
   end
 
