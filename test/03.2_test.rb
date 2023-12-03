@@ -76,6 +76,23 @@ class EngineSchematicTest < Minitest::Test
     refute es.part_number?(not_part_number)
   end
 
+  def test_potential_gears
+    input = ["467..114..",
+             "...*......",
+             "..35..633.",
+             "......#...",
+             "617*......",
+             ".....+.58.",
+             "..592.....",
+             "......755.",
+             "...$.*....",
+             ".664.598.."]
+    es = EngineSchematic.new(input)
+    assert_equal(["  *: (  1,  3)",
+                  "  *: (  4,  3)",
+                  "  *: (  8,  5)"], es.potential_gears.map(&:to_s))
+  end
+
   def test_sum
     es = EngineSchematic.new(@input)
     assert_equal(4361, es.sum)

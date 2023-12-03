@@ -50,6 +50,16 @@ class EngineSchematic
     result.flatten.compact
   end
 
+  def potential_gears
+    result = []
+    input.each_with_index do |row, y|
+      row.chars.each_with_index do |char, x|
+        result << EnginePart.new(value: "*", y:, xs: [x,x]) if char == "*"
+      end
+    end
+    result.flatten.compact
+  end
+
   def symbol_at?(coordinate)
     y, x = coordinate
     !input[y][x].match?(/\d|\./)
