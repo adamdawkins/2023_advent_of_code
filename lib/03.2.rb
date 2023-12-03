@@ -76,7 +76,7 @@ class EngineSchematic
   end
 
   def gear?(potential_gear)
-    NumberRepository.new(numbers).at_coordinates(sanitize_coordinates(potential_gear.adjacent_coordinates)).count == 2
+    number_repository.at_coordinates(sanitize_coordinates(potential_gear.adjacent_coordinates)).count == 2
   end
 
   def part_numbers
@@ -88,6 +88,10 @@ class EngineSchematic
   def sanitize_coordinates(coordinates)
     # reject adjacents below the bottom of the input or beyond the far right edge
     coordinates.select {|y,x| y < max_y && x < max_x }
+  end
+
+  def number_repository
+    @number_repository ||= NumberRepository.new(numbers)
   end
 end
 
