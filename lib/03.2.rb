@@ -66,13 +66,19 @@ class EngineSchematic
   end
 
   def sum
-    part_numbers.sum(&:value)
+    gears.sum do |gear|
+      gear_numbers(gear).map(&:value).inject(:*)
+    end
   end
 
   def part_number?(number)
     # reject adjacents below the bottom of the input or beyond the far right edge
     sanitize_coordinates(number.adjacent_coordinates)
       .map {|c| symbol_at?(c) }.any?
+  end
+
+  def gears
+    potential_gears.select {|pg| gear?(pg) }
   end
 
   def gear?(potential_gear)

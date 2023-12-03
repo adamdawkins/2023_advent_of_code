@@ -116,7 +116,7 @@ class EngineSchematicTest < Minitest::Test
 
   def test_sum
     es = EngineSchematic.new(@input)
-    assert_equal(4361, es.sum)
+    assert_equal(467835, es.sum)
   end
 end
 
