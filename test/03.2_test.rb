@@ -93,6 +93,27 @@ class EngineSchematicTest < Minitest::Test
                   "  *: (  8,  5)"], es.potential_gears.map(&:to_s))
   end
 
+  def test_gear? # exactly two adjacent numbers
+    input = ["467..114..",
+             "...*......",
+             "..35..633.",
+             "......#...",
+             "617*......",
+             ".....+.58.",
+             "..592.....",
+             "......755.",
+             "...$.*....",
+             ".664.598.."]
+    es = EngineSchematic.new(input)
+    gear =      EnginePart.new(value: "*", y: 1, xs: [3,3])
+    not_gear =  EnginePart.new(value: "*", y: 4, xs: [3,3])
+    last_gear = EnginePart.new(value: "*", y: 8, xs: [5,5])
+
+    assert es.gear?(gear) 
+    refute es.gear?(not_gear)
+    assert es.gear?(last_gear)
+  end
+
   def test_sum
     es = EngineSchematic.new(@input)
     assert_equal(4361, es.sum)

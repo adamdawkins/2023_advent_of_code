@@ -75,6 +75,10 @@ class EngineSchematic
       .map {|c| symbol_at?(c) }.any?
   end
 
+  def gear?(potential_gear)
+    NumberRepository.new(numbers).at_coordinates(potential_gear.adjacent_coordinates).count == 2
+  end
+
   def part_numbers
     numbers.select {|n| part_number?(n) }
   end
