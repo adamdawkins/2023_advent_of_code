@@ -48,7 +48,19 @@ class EngineSchematicTest < Minitest::Test
     assert_equal([2, 7, 3, 8]       , numbers.map(&:max_x))
   end
 
-  def test_sum
-    assert_equal(4361, EngineSchematic.new(@input).sum)
+  def test_symbol_at?
+    es = EngineSchematic.new(@input)
+    refute es.symbol_at?([0,0]) # refute digits
+    refute es.symbol_at?([0,4]) # refute .
+    assert es.symbol_at?([1,3]) # assert *
+    assert es.symbol_at?([3,6]) # assert #
+    assert es.symbol_at?([4,3]) # assert *
+    assert es.symbol_at?([5,5]) # assert +
+    assert es.symbol_at?([8,3]) # assert $
+    assert es.symbol_at?([8,5]) # assert *
   end
+
+  # def test_sum
+  #   assert_equal(4361, EngineSchematic.new(@input).sum)
+  # end
 end

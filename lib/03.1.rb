@@ -42,6 +42,12 @@ class EngineSchematic
     result.flatten.compact
   end
 
+  def symbol_at?(coordinate)
+    y, x = coordinate
+    !input[y][x].match?(/\d|\./)
+  end
+
+
   def sum; end
 end
 
