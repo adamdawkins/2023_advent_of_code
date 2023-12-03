@@ -34,5 +34,14 @@ class EngineSchematic
     @input = input
   end
 
+  def numbers
+    result = []
+    input.each do |row|
+      result << row.scan(/\d+/)
+    end
+    result.flatten.compact.map(&:to_i)
+  end
+
+
   def sum; end
 end
