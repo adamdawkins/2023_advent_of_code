@@ -36,12 +36,37 @@ class EngineSchematic
 
   def numbers
     result = []
-    input.each do |row|
-      result << row.scan(/\d+/)
+    input.each_with_index do |row, y|
+      result << numbers_from_row(row, y)
     end
-    result.flatten.compact.map {|number_string| Number.new(value: number_string.to_i, y: 0, xs: [0,0]) }
+    result.flatten.compact
   end
 
-
   def sum; end
+  
+
+  private 
+
+  def numbers_from_row(row, y)
+    result = []
+    value = ""
+    min_x = nil
+    max_x = nil
+    row.chars.each_with_index do |char, x|
+      if char.match?(/\d/)
+        min_x = x if value.empty?
+        value += char
+        max_x = x
+      else
+        next if value.empty?
+        result << Number.new(value: value.to_i, y:, xs: [min_x, max_x])
+        value = ""
+        min_x = nil
+        max_x = nil
+      end
+    end
+
+    result
+  end
+
 end

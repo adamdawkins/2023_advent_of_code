@@ -41,8 +41,11 @@ class EngineSchematicTest < Minitest::Test
     input = ["467..114..",
              "...*......",
              "..35..633."]
-    assert_equal([467, 114, 35, 633],
-                 EngineSchematic.new(input).numbers.map(&:value))
+    numbers = EngineSchematic.new(input).numbers
+    assert_equal([467, 114, 35, 633], numbers.map(&:value))
+    assert_equal([0, 0, 2, 2]       , numbers.map(&:y))
+    assert_equal([0, 5, 2, 6]       , numbers.map(&:min_x))
+    assert_equal([2, 7, 3, 8]       , numbers.map(&:max_x))
   end
 
   def test_sum
