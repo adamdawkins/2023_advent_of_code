@@ -48,6 +48,18 @@ class EngineSchematic
   private 
 
   def numbers_from_row(row, y)
+    NumbersFromRow.new(row, y).numbers_from_row
+  end
+end
+
+class NumbersFromRow
+  attr_reader :row, :y
+  def initialize(row, y)
+    @row = row
+    @y = y
+  end
+
+  def numbers_from_row
     result = []
     value = ""
     min_x = nil
@@ -68,5 +80,4 @@ class EngineSchematic
 
     result
   end
-
 end
