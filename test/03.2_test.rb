@@ -81,3 +81,28 @@ class EngineSchematicTest < Minitest::Test
     assert_equal(4361, es.sum)
   end
 end
+
+class NumberRepositoryTest < Minitest::Test
+  # 0123456789
+  # 467..114..
+  # ...*......
+  # ..35..633.
+  # ......#...
+  # 617*......
+  # .....+.58.
+  # ..592.....
+  # ......755.
+  # ...$.*....
+  # .664.598..
+  def test_at_coordinates
+    numbers = [EnginePart.new(value: 467, y: 0, xs: [0,2]),
+               EnginePart.new(value: 114, y: 0, xs: [5,7]),
+               EnginePart.new(value:  35, y: 2, xs: [2,3]),
+               EnginePart.new(value: 633, y: 2, xs: [6,8])]
+
+    repo = NumberRepository.new(numbers)
+
+    assert_equal([467, 35],
+                 repo.at_coordinates([[0, 2], [0, 3], [0, 4], [1, 2], [1, 4], [2, 2], [2, 3], [2, 4]]).map(&:value))
+  end
+end

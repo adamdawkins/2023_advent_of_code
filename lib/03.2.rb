@@ -119,3 +119,15 @@ class NumbersFromRow
     self.max_x = x
   end
 end
+
+class NumberRepository
+  attr_reader :numbers
+
+  def initialize(numbers)
+    @numbers = numbers
+  end
+
+  def at_coordinates(coordinates)
+    numbers.filter {|n| (n.coordinates & coordinates).any? }
+  end
+end
