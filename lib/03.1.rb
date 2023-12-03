@@ -7,7 +7,9 @@ class Number
   end
 
   def coordinates
-    [[y, min_x], [y, max_x]]
+    (min_x..max_x).map do |x|
+      [y, x]
+    end
   end
 
   def adjacent_coordinates
