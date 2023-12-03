@@ -86,6 +86,7 @@ class NumbersFromRow
         save_number
       end
     end
+    save_number
 
     self.result
   end
