@@ -25,7 +25,7 @@ class Number
       end
     end
 
-    result - coordinates
+    (result - coordinates).select {|y, x| !y.negative? && !x.negative? }
   end
 end
 

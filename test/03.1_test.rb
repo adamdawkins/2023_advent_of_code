@@ -19,7 +19,10 @@ class NumberTest < Minitest::Test
     assert_equal([[1,1], [1,2], [1,3], [1,4],
                   [2,1], [2,4],
                   [3,1], [3,2], [3,3], [3,4]], number.adjacent_coordinates)
-
+  
+    number_at_edge = Number.new(value: 467, y: 0, xs: [0, 2])
+    assert_equal([[0,3],
+                  [1,0], [1,1], [1,2], [1,3]], number_at_edge.adjacent_coordinates)
   end
 end
 
