@@ -71,16 +71,23 @@ class EngineSchematic
 
   def part_number?(number)
     # reject adjacents below the bottom of the input or beyond the far right edge
-    number.adjacent_coordinates.select {|y,x| y < max_y && x < max_x}
+    sanitize_coordinates(number.adjacent_coordinates)
       .map {|c| symbol_at?(c) }.any?
   end
 
   def gear?(potential_gear)
-    NumberRepository.new(numbers).at_coordinates(potential_gear.adjacent_coordinates).count == 2
+    NumberRepository.new(numbers).at_coordinates(sanitize_coordinates(potential_gear.adjacent_coordinates)).count == 2
   end
 
   def part_numbers
     numbers.select {|n| part_number?(n) }
+  end
+
+  private
+
+  def sanitize_coordinates(coordinates)
+    # reject adjacents below the bottom of the input or beyond the far right edge
+    coordinates.select {|y,x| y < max_y && x < max_x }
   end
 end
 
