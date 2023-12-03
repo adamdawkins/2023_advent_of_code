@@ -49,10 +49,17 @@ class EngineSchematic
     !input[y][x].match?(/\d|\./)
   end
 
-  def sum; end
+  def sum
+    part_numbers.sum(&:value)
+  end
 
   def part_number?(number)
-    number.adjacent_coordinates.map {|c| symbol_at?(c) }.any?
+    number.adjacent_coordinates.select {|y,x| y < input.length } # reject adjacents below the bottom of the inpuct
+      .map {|c| symbol_at?(c) }.any?
+  end
+
+  def part_numbers
+    numbers.select {|n| part_number?(n) }
   end
 end
 

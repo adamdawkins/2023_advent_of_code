@@ -71,7 +71,8 @@ class EngineSchematicTest < Minitest::Test
     refute es.part_number?(not_part_number)
   end
 
-  # def test_sum
-  #   assert_equal(4361, EngineSchematic.new(@input).sum)
-  # end
+  def test_sum
+    es = EngineSchematic.new(@input)
+    assert_equal(4361, es.sum)
+  end
 end
