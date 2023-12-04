@@ -38,13 +38,16 @@ class Pile
     @card_counts = Hash[(1..input.length).zip(Array.new(input.length) { 1 })]
   end
 
-  def process_card(card)
-    next_card_id = card.id + 1
-    (next_card_id..(card.winning_number_count + next_card_id -1)).each do |id|
-      @card_counts[id] += 1
+  def process_card(card, times)
+    times.times do
+      next_card_id = card.id + 1
+      (next_card_id..(card.winning_number_count + next_card_id -1)).each do |id|
+        @card_counts[id] += 1
+      end
     end
   end
 
   def total_cards
+    @card_counts.values.sum
   end
 end
