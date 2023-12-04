@@ -15,14 +15,8 @@ class Card
     extract_numbers(number_input)
   end
 
-  def winning_numbers
-    prize_numbers & numbers
-  end
-
-  def points
-    return 0 if winning_numbers.empty?
-
-    Array.new(winning_numbers.count - 1).inject(1) {|result, _n| result * 2}
+  def winning_number_count
+    (prize_numbers & numbers).count
   end
 
   private
@@ -38,10 +32,6 @@ class Pile
   attr_reader :cards
   def initialize(input)
     @cards = input.map { |card_input| Card.new(card_input) }
-  end
-
-  def total_points
-    cards.sum(&:points)
   end
 
   def total_cards

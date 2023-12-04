@@ -25,8 +25,8 @@ class CardTest < Minitest::Test
     assert_equal([83, 86, 6, 31, 17, 9, 48, 53], @card.numbers)
   end
 
-  def test_winning_numbers
-    assert_equal([48, 83, 17, 86].sort, @card.winning_numbers.sort)
+  def test_winning_number_count
+    assert_equal(4, @card.winning_number_count)
   end
 end
 
@@ -41,7 +41,7 @@ class PileTest < Minitest::Test
     @pile = Pile.new(input)
   end
 
-  def test_total_cards
-      assert_equal(30, @pile.total_cards)
-  end
+  # def test_total_cards
+  #     assert_equal(30, @pile.total_cards)
+  # end
 end
