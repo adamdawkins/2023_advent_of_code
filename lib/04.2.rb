@@ -3,7 +3,7 @@ class Card
 
   def initialize(input)
     @input = input
-    @id = input.match(/Card\s*(\d+)/)[1]
+    @id = input.match(/Card\s*(\d+)/)[1].to_i
     @prize_input, @number_input = input.split(":").last.split(" | ")
   end
 

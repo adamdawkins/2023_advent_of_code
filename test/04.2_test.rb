@@ -14,7 +14,7 @@ class CardTest < Minitest::Test
   end
 
   def test_id
-    assert_equal("1", @card.id)
+    assert_equal(1, @card.id)
   end
 
   def test_prize_numbers
