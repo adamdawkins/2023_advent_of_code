@@ -8,14 +8,18 @@ class Card
   end
 
   def prize_numbers
-    prize_input.scan(/(\d+)/).flatten.map(&:to_i)
+    extract_numbers(prize_input)
   end
 
   def numbers
-    number_input.scan(/(\d+)/).flatten.map(&:to_i)
+    extract_numbers(number_input)
   end
 
   private
 
   attr_reader :prize_input, :number_input
+
+  def extract_numbers(string)
+    string.scan(/(\d+)/).flatten.map(&:to_i)
+  end
 end
