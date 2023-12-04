@@ -15,6 +15,10 @@ class Card
     extract_numbers(number_input)
   end
 
+  def winning_numbers
+    prize_numbers & numbers
+  end
+
   private
 
   attr_reader :prize_input, :number_input
