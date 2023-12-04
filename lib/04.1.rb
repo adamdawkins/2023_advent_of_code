@@ -19,6 +19,12 @@ class Card
     prize_numbers & numbers
   end
 
+  def points
+    return 0 if winning_numbers.empty?
+
+    Array.new(winning_numbers.count - 1).inject(1) {|result, _n| result * 2}
+  end
+
   private
 
   attr_reader :prize_input, :number_input
