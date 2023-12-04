@@ -33,3 +33,14 @@ class Card
     string.scan(/(\d+)/).flatten.map(&:to_i)
   end
 end
+
+class Pile
+  attr_reader :cards
+  def initialize(input)
+    @cards = input.map { |card_input| Card.new(card_input) }
+  end
+
+  def total_points
+    cards.sum(&:points)
+  end
+end
