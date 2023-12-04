@@ -58,5 +58,8 @@ class PileTest < Minitest::Test
 
   def test_total_cards
     assert_equal(6, @pile.total_cards)
+
+    @pile.process_cards
+    assert_equal(30, @pile.total_cards)
   end
 end
