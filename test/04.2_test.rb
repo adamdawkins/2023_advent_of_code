@@ -41,6 +41,21 @@ class PileTest < Minitest::Test
     @pile = Pile.new(input)
   end
 
+  def test_card_counts
+    assert_equal({1=> 1, 2=> 1, 3=> 1, 4=> 1, 5=> 1, 6=> 1}, @pile.card_counts)
+  end
+
+  def test_process_card
+    @pile.process_card(Card.new("Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53"))
+    assert_equal({1 => 1,
+                  2 => 2,
+                  3 => 2,
+                  4 => 2,
+                  5 => 2,
+                  6 => 1}, @pile.card_counts)
+
+  end
+
   # def test_total_cards
   #     assert_equal(30, @pile.total_cards)
   # end

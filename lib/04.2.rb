@@ -29,9 +29,20 @@ class Card
 end
 
 class Pile
-  attr_reader :cards
+  attr_reader :cards, :card_counts
+
   def initialize(input)
     @cards = input.map { |card_input| Card.new(card_input) }
+
+    # Start with a count of 1 for each card
+    @card_counts = Hash[(1..input.length).zip(Array.new(input.length) { 1 })]
+  end
+
+  def process_card(card)
+    next_card_id = card.id + 1
+    (next_card_id..(card.winning_number_count + next_card_id -1)).each do |id|
+      @card_counts[id] += 1
+    end
   end
 
   def total_cards
