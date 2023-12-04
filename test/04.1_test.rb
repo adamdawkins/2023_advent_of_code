@@ -20,4 +20,8 @@ class CardTest < Minitest::Test
   def test_prize_numbers
     assert_equal([41, 48, 83, 86, 17], @card.prize_numbers)
   end
+
+  def test_numbers
+    assert_equal([83, 86, 6, 31, 17, 9, 48, 53], @card.numbers)
+  end
 end
