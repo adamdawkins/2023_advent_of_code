@@ -1,6 +1,32 @@
 require "minitest/autorun"
 require_relative "../lib/05.1"
 
+class MapTest < Minitest::Test
+  def setup
+    @input = ["seed-to-soil map:",
+              "50 98 2",
+              "52 50 48"]
+    @map = Map.new(@input)
+  end
+
+  def test_name
+    assert_equal("seed-to-soil", @map.name)
+  end
+
+  def test_transformations
+    assert_equal([ { min: 98, max: 99, change: -48 },
+                   { min: 50, max: 97, change: 2 }],
+                  @map.transformations)
+  end
+
+  def test_transform
+    assert_equal(81, @map.transform(79))
+    assert_equal(14, @map.transform(14))
+    assert_equal(57, @map.transform(55))
+    assert_equal(13, @map.transform(13))
+  end
+end
+
 class AlmanacTest < Minitest::Test
   def setup 
     @input = [
