@@ -83,4 +83,9 @@ class AlmanacTest < Minitest::Test
 
     assert_equal([82, 43, 86, 35], @almanac.seed_locations)
   end
+
+  def test_min_seed_location
+    assert_equal(35, @almanac.min_seed_location)
+  end
+
 end

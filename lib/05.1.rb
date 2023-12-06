@@ -53,6 +53,10 @@ class Almanac
     end
   end
 
+  def min_seed_location
+    seed_locations.min
+  end
+
   private
 
   attr_reader :input
