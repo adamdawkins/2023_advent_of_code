@@ -64,4 +64,14 @@ class AlmanacTest < Minitest::Test
     # seeds: 79 14 55 13
     assert_equal([79, 14, 55, 13], @almanac.seeds) 
   end
+
+  def test_maps
+    assert_equal(%w[seed-to-soil
+                    soil-to-fertilizer
+                    fertilizer-to-water
+                    water-to-light
+                    light-to-temperature
+                    temperature-to-humidity
+                    humidity-to-location], @almanac.maps.map(&:name))
+  end
 end

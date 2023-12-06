@@ -40,6 +40,13 @@ class Almanac
     input.first.scan(/\d+/).map(&:to_i)
   end
 
+  def maps 
+     input[1..].chunk {|x| x.empty? }
+               .reject {|divider, _| divider}
+               .map(&:last)
+               .map {| map_input| Map.new(map_input) }
+  end
+
   private
 
   attr_reader :input
