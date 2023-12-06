@@ -47,7 +47,21 @@ class Almanac
                .map {| map_input| Map.new(map_input) }
   end
 
+  def seed_locations
+    seeds.map do |seed|
+      seed_location(seed) 
+    end
+  end
+
   private
 
   attr_reader :input
+
+  def seed_location(seed)
+    result = seed
+    maps.each do |map|
+      result = map.transform(result)
+    end
+    result
+  end
 end
