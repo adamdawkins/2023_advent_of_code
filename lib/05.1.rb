@@ -8,10 +8,6 @@ class Map
     input.first.match(/([\w|-]*) map:/)[1]
   end
 
-  def transformations
-    transformation_input.map {|row| row_to_transformation(row) }
-  end
-
   def transform(number)
     change = transformations.select {|t| t[:min] <= number && t[:max] >= number }.sum {|t| t[:change] } || 0
     number + change
@@ -20,6 +16,10 @@ class Map
   private
 
   attr_reader :input, :transformation_input
+
+  def transformations
+    transformation_input.map {|row| row_to_transformation(row) }
+  end
 
   def row_to_transformation(row)
     destination_start, source_start, range =  row.scan(/\d+/).map(&:to_i)

@@ -13,12 +13,6 @@ class MapTest < Minitest::Test
     assert_equal("seed-to-soil", @map.name)
   end
 
-  def test_transformations
-    assert_equal([ { min: 98, max: 99, change: -48 },
-                   { min: 50, max: 97, change: 2 }],
-                  @map.transformations)
-  end
-
   def test_transform
     assert_equal(81, @map.transform(79))
     assert_equal(14, @map.transform(14))
