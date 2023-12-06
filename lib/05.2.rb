@@ -37,7 +37,7 @@ class Almanac
   end
 
   def seeds
-    input.first.scan(/\d+/).map(&:to_i).each_slice(2).to_a.map do |start, size|
+    @seeds ||= input.first.scan(/\d+/).map(&:to_i).each_slice(2).to_a.map do |start, size|
       (start..(start + size -1)).to_a
     end.reduce(:+)
   end
