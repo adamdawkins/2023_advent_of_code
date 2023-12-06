@@ -43,10 +43,10 @@ class Almanac
   end
 
   def maps 
-     input[1..].chunk {|x| x.empty? }
-               .reject {|divider, _| divider}
-               .map(&:last)
-               .map {| map_input| Map.new(map_input) }
+    @maps ||= input[1..].chunk {|x| x.empty? }
+      .reject {|divider, _| divider}
+      .map(&:last)
+      .map {| map_input| Map.new(map_input) }
   end
 
   def seed_locations
