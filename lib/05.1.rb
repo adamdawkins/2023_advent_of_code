@@ -58,10 +58,6 @@ class Almanac
   attr_reader :input
 
   def seed_location(seed)
-    result = seed
-    maps.each do |map|
-      result = map.transform(result)
-    end
-    result
+    maps.inject(seed) {|result, map| result = map.transform(result) }
   end
 end
