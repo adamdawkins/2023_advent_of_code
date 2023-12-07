@@ -15,6 +15,10 @@ class RacerTest < Minitest::Test
   def test_number_of_wins_per_race
     assert_equal([4, 8, 9], @racer.number_of_wins_per_race)
   end
+
+  def test_answer
+    assert_equal(288, @racer.answer)
+  end
 end
 
 class RaceTest < Minitest::Test
