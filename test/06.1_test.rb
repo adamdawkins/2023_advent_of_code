@@ -11,6 +11,10 @@ class RacerTest < Minitest::Test
   def test_races
     assert_equal([[7, 9], [15, 40], [30, 200]], @racer.races.map {|race| [race.time, race.record] })
   end
+
+  def test_number_of_wins_per_race
+    assert_equal([4, 8, 9], @racer.number_of_wins_per_race)
+  end
 end
 
 class RaceTest < Minitest::Test

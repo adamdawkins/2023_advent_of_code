@@ -30,6 +30,10 @@ class Racer
     end
   end
 
+  def number_of_wins_per_race
+    races.map(&:number_of_wins)
+  end
+
   private
 
   attr_reader :times_input, :distances_input
