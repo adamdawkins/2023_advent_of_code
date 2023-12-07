@@ -1,3 +1,15 @@
+class Race
+  attr_reader :time
+
+  def initialize(time:)
+    @time = time
+  end
+
+  def hold(ms)
+    distance = (time - ms) * ms
+  end
+end
+
 class Racer
   def initialize(input)
     @times_input, @distances_input = input
