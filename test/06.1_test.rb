@@ -15,7 +15,7 @@ end
 
 class RaceTest < Minitest::Test
   def setup
-    @race = Race.new(time: 7)
+    @race = Race.new(time: 7, record: 9)
   end
   def test_hold
     assert_equal( 0, @race.hold(0))
@@ -30,5 +30,9 @@ class RaceTest < Minitest::Test
 
   def test_distances
     assert_equal([0, 6, 10, 12, 12, 10, 6, 0], @race.distances)
+  end
+
+  def test_number_of_wins
+    assert_equal(4, @race.number_of_wins)
   end
 end

@@ -1,8 +1,13 @@
 class Race
-  attr_reader :time
+  attr_reader :time, :record
 
-  def initialize(time:)
+  def initialize(time:, record:)
     @time = time
+    @record = record
+  end
+
+  def number_of_wins
+    distances.select {|distance| distance > record }.count
   end
 
   def hold(ms)
