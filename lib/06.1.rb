@@ -8,6 +8,10 @@ class Race
   def hold(ms)
     distance = (time - ms) * ms
   end
+
+  def distances
+    (0..time).map {|speed| hold(speed) }
+  end
 end
 
 class Racer
