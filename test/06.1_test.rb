@@ -9,7 +9,7 @@ class RacerTest < Minitest::Test
   end
 
   def test_races
-    assert_equal([[7, 9], [15, 40], [30, 200]], @racer.races)
+    assert_equal([[7, 9], [15, 40], [30, 200]], @racer.races.map {|race| [race.time, race.record] })
   end
 end
 

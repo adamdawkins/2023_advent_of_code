@@ -25,7 +25,9 @@ class Racer
   end
 
   def races
-    @races ||= times.zip(distances)
+    @races ||= times.zip(distances).map do |time, record|
+      Race.new(time:, record:)
+    end
   end
 
   private
