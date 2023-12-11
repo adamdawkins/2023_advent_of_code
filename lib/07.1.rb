@@ -9,13 +9,13 @@ class Hand
   ONE_PAIR        = :one_pair
   HIGH_CARD       = :high_card
 
-  TYPE_RANKS = { FIVE_OF_A_KIND  => 7,
-                 FOUR_OF_A_KIND  => 6,
-                 FULL_HOUSE      => 5,
-                 THREE_OF_A_KIND => 4,
-                 TWO_PAIR        => 3,
-                 ONE_PAIR        => 2,
-                 HIGH_CARD       => 1 }
+  TYPE_RANKS = { FIVE_OF_A_KIND  => 0,
+                 FOUR_OF_A_KIND  => 1,
+                 FULL_HOUSE      => 2,
+                 THREE_OF_A_KIND => 3,
+                 TWO_PAIR        => 4,
+                 ONE_PAIR        => 5,
+                 HIGH_CARD       => 6 }
 
   def initialize(cards)
     @cards = cards.chars
