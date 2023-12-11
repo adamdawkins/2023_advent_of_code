@@ -53,4 +53,8 @@ class CamelCardsTest < Minitest::Test
                   "T55J5",
                   "QQQJA"], @camel_cards.order.map(&:hand).map(&:to_s))
   end
+
+  def test_total_winnings
+    assert_equal(6440, @camel_cards.total_winnings)
+  end
 end

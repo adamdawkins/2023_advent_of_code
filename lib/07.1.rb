@@ -98,6 +98,15 @@ class CamelCards
     table.sort_by(&:hand)
   end
 
+  def total_winnings
+    winnings = 0
+    order.map(&:bid).each_with_index do |bid, index|
+      winnings += bid * (index + 1)
+    end
+    
+    winnings
+  end
+
   private
 
   attr_reader :input
