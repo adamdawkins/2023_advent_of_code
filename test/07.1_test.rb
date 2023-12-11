@@ -45,4 +45,12 @@ class CamelCardsTest < Minitest::Test
   def test_bids
     assert_equal([765, 684, 28, 220, 483], @camel_cards.table.map(&:bid))
   end
+
+  def test_order
+    assert_equal(["32T3K",
+                  "KTJJT",
+                  "KK677",
+                  "T55J5",
+                  "QQQJA"], @camel_cards.order.map(&:hand).map(&:to_s))
+  end
 end

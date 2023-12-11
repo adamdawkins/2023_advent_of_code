@@ -88,10 +88,14 @@ class CamelCards
   end
 
   def table
-    input.map do |play|
+    @table ||= input.map do |play|
       hand_input, bid_input = play.split(" ")
       OpenStruct.new(hand: Hand.new(hand_input), bid: bid_input.to_i)
     end
+  end
+
+  def order
+    table.sort_by(&:hand)
   end
 
   private
