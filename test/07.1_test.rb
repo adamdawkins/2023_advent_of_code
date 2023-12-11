@@ -11,4 +11,14 @@ class HandTest < Minitest::Test
     assert_equal(Hand::ONE_PAIR, Hand.new("A23A4").type)
     assert_equal(Hand::HIGH_CARD, Hand.new("23456").type)
   end
+
+  def test_rank
+    assert_equal(7, Hand.new("AAAAA").rank)
+    assert_equal(6, Hand.new("AA8AA").rank)
+    assert_equal(5, Hand.new("23332").rank)
+    assert_equal(4, Hand.new("TTT98").rank)
+    assert_equal(3, Hand.new("23432").rank)
+    assert_equal(2, Hand.new("A23A4").rank)
+    assert_equal(1, Hand.new("23456").rank)
+  end
 end
