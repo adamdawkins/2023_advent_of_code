@@ -47,7 +47,7 @@ class Hand
     when 3
       counts_without_max.values.include?(2) ? FULL_HOUSE : THREE_OF_A_KIND
     when 2
-      counts_without_max.values.count(2) == 2 ? TWO_PAIR : ONE_PAIR
+      counts_without_max.values.include?(2) ? TWO_PAIR : ONE_PAIR
     else
       HIGH_CARD
     end
@@ -68,7 +68,6 @@ class Hand
   def counts_without_max
     cards.reject {|c| ["J", max_card.card].include?(c) }.tally
   end
-
 
   def <=>(other_hand)
     type_comparison = rank <=> other_hand.rank
@@ -91,7 +90,7 @@ class Hand
   end
 
   def max_card
-    card, count = counts_without_jokers.max
+    card, count = counts_without_jokers.max_by {|c| c[1] }
     OpenStruct.new(card:, count:)
   end
 
