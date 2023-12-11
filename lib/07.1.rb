@@ -40,6 +40,11 @@ class Hand
     TYPE_RANKS[type]
   end
 
+  def <=>(other_hand)
+    type_comparison = rank <=> other_hand.rank
+    type_comparison
+  end
+
   private
 
   def counts

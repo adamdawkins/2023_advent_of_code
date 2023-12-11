@@ -21,4 +21,8 @@ class HandTest < Minitest::Test
     assert_equal(2, Hand.new("A23A4").rank)
     assert_equal(1, Hand.new("23456").rank)
   end
+
+  def test_spaceship
+    assert_equal(1, Hand.new("AAAAA")<=>(Hand.new("AA8AA")))
+  end
 end
