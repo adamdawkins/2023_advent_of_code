@@ -24,5 +24,6 @@ class HandTest < Minitest::Test
 
   def test_spaceship
     assert_equal(-1, Hand.new("AAAAA")<=>(Hand.new("AA8AA")))
+    assert_equal(-1, Hand.new("33332")<=>(Hand.new("2AAAA")))
   end
 end

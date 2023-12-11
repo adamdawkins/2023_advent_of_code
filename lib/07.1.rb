@@ -17,6 +17,21 @@ class Hand
                  ONE_PAIR        => 5,
                  HIGH_CARD       => 6 }
 
+  CARD_RANKS = { "A" =>  0,
+                 "K" =>  1,
+                 "Q" =>  2,
+                 "J" =>  3,
+                 "T" =>  4,
+                 "9" =>  5,
+                 "8" =>  6,
+                 "7" =>  7,
+                 "6" =>  8,
+                 "5" =>  9,
+                 "4" => 10,
+                 "3" => 11,
+                 "2" => 12 }
+
+
   def initialize(cards)
     @cards = cards.chars
   end
@@ -42,6 +57,7 @@ class Hand
 
   def <=>(other_hand)
     type_comparison = rank <=> other_hand.rank
+    return card_comparison(other_hand) if type_comparison.zero?
     type_comparison
   end
 
@@ -49,6 +65,14 @@ class Hand
 
   def counts
     cards.tally
+  end
+
+  def card_comparison(other_hand)
+    (0..4).each do |position|
+      comparison = CARD_RANKS[cards[position]] <=> CARD_RANKS[other_hand.cards[position]]
+      return comparison unless comparison.zero?
+    end
+    0
   end
 
 end
