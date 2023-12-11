@@ -11,27 +11,27 @@ class Hand
   ONE_PAIR        = :one_pair
   HIGH_CARD       = :high_card
 
-  TYPE_RANKS = { FIVE_OF_A_KIND  => 0,
-                 FOUR_OF_A_KIND  => 1,
-                 FULL_HOUSE      => 2,
+  TYPE_RANKS = { FIVE_OF_A_KIND  => 6,
+                 FOUR_OF_A_KIND  => 5,
+                 FULL_HOUSE      => 4,
                  THREE_OF_A_KIND => 3,
-                 TWO_PAIR        => 4,
-                 ONE_PAIR        => 5,
-                 HIGH_CARD       => 6 }
+                 TWO_PAIR        => 2,
+                 ONE_PAIR        => 1,
+                 HIGH_CARD       => 0 }
 
-  CARD_RANKS = { "A" =>  0,
-                 "K" =>  1,
-                 "Q" =>  2,
-                 "J" =>  3,
-                 "T" =>  4,
-                 "9" =>  5,
+  CARD_RANKS = { "A" => 12,
+                 "K" => 11,
+                 "Q" => 10,
+                 "J" =>  9,
+                 "T" =>  8,
+                 "9" =>  7,
                  "8" =>  6,
-                 "7" =>  7,
-                 "6" =>  8,
-                 "5" =>  9,
-                 "4" => 10,
-                 "3" => 11,
-                 "2" => 12 }
+                 "7" =>  5,
+                 "6" =>  4,
+                 "5" =>  3,
+                 "4" =>  2,
+                 "3" =>  1,
+                 "2" =>  0 }
 
 
   def initialize(cards)
