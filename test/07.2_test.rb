@@ -12,6 +12,7 @@ class HandTest < Minitest::Test
     assert_equal(Hand::HIGH_CARD, Hand.new("23456").type)
 
     assert_equal(Hand::FOUR_OF_A_KIND, Hand.new("QJJQ2").type)
+    assert_equal(Hand::THREE_OF_A_KIND, Hand.new("J2KQQ").type)
   end
 
   def test_joker_count
