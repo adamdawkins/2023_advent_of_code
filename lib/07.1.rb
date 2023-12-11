@@ -63,6 +63,10 @@ class Hand
     type_comparison
   end
 
+  def to_s
+    cards.join
+  end
+
   private
 
   def counts

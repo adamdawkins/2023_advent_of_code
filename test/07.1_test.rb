@@ -26,6 +26,10 @@ class HandTest < Minitest::Test
     assert_equal(1, Hand.new("AAAAA")<=>(Hand.new("AA8AA")))
     assert_equal(1, Hand.new("33332")<=>(Hand.new("2AAAA")))
   end
+
+  def test_to_s
+    assert_equal("AAAAA", Hand.new("AAAAA").to_s)
+  end
 end
 
 class CamelCardsTest < Minitest::Test
