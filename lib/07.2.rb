@@ -39,7 +39,7 @@ class Hand
   end
 
   def type
-    case counts_without_jokers.values.max + joker_count
+    case max_card_count
     when 5
       FIVE_OF_A_KIND
     when 4
@@ -79,6 +79,10 @@ class Hand
 
   def counts
     cards.tally
+  end
+
+  def max_card_count
+    (counts_without_jokers.values.max || 0) + joker_count
   end
 
   def card_comparison(other_hand)
