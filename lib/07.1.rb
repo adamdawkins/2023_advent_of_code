@@ -1,3 +1,5 @@
+require "ostruct"
+
 class Hand
   attr_reader :cards
 
@@ -74,5 +76,21 @@ class Hand
     end
     0
   end
+end
 
+class CamelCards
+  def initialize(input)
+    @input = input
+  end
+
+  def table
+    input.map do |play|
+      hand_input, bid_input = play.split(" ")
+      OpenStruct.new(hand: Hand.new(hand_input), bid: bid_input.to_i)
+    end
+  end
+
+  private
+
+  attr_reader :input
 end

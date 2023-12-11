@@ -27,3 +27,18 @@ class HandTest < Minitest::Test
     assert_equal(-1, Hand.new("33332")<=>(Hand.new("2AAAA")))
   end
 end
+
+class CamelCardsTest < Minitest::Test
+  def setup
+    @input = ["32T3K 765",
+              "T55J5 684",
+              "KK677 28",
+              "KTJJT 220",
+              "QQQJA 483"]
+    @camel_cards = CamelCards.new(@input)
+  end
+
+  def test_bids
+    assert_equal([765, 684, 28, 220, 483], @camel_cards.table.map(&:bid))
+  end
+end
