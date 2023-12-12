@@ -9,7 +9,7 @@ class Wasteland
   end
 
   def directions
-    directions_input.chars.map {|c| c == "R" ? :right : :left }
+    @directions ||= directions_input.chars.map {|c| c == "R" ? :right : :left }
   end
 
   def network
@@ -32,7 +32,7 @@ class Wasteland
   end
 
   def next_left?
-    directions[steps] == :left
+    directions[steps % directions_count] == :left
   end
 
   def still_travelling?
@@ -47,5 +47,9 @@ class Wasteland
   def take_step
     @current_node = next_node
     @steps += 1
+  end
+
+  def directions_count
+    directions.count
   end
 end

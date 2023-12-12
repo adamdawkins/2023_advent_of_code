@@ -34,7 +34,12 @@ class WastelandTest < Minitest::Test
   end
 
   def test_steps
-    wasteland = Wasteland.new(@input)
-    assert_equal(2, wasteland.journey.steps)
+    assert_equal(2, Wasteland.new(@input).journey.steps)
+    input = ["LLR",
+             "",
+             "AAA = (BBB, BBB)",
+             "BBB = (AAA, ZZZ)",
+             "ZZZ = (ZZZ, ZZZ)"]
+    assert_equal(6, Wasteland.new(input).journey.steps)
   end
 end
