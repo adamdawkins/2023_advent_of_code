@@ -17,10 +17,7 @@ class Wasteland
   end
 
   def journey
-    while still_travelling? do
-      @current_node = next_node
-      @steps += 1
-    end
+    take_step while still_travelling?
 
     return self # to allow `wasteland.journey.steps`
   end
@@ -45,5 +42,10 @@ class Wasteland
   def next_node
     choices = network[current_node]
     next_left?? choices.first : choices.last
+  end
+  
+  def take_step
+    @current_node = next_node
+    @steps += 1
   end
 end
