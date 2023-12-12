@@ -27,12 +27,8 @@ class Wasteland
     return self
   end
 
-  def next_direction
-    directions[steps]
-  end
-
   def next_left?
-    next_direction == :left
+    directions[steps] == :left
   end
 
   private
