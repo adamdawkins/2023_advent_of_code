@@ -25,6 +25,15 @@ class Wasteland
     return self # to allow `wasteland.journey.steps`
   end
 
+  private
+
+  attr_reader :input, :directions_input, :network_input, :current_node
+
+  def parse_node(node)
+    key, left, right = node.scan(/(\w*) = \((\w*), (\w*)\)/).flatten
+    [key, [left, right]]
+  end
+
   def next_left?
     directions[steps] == :left
   end
@@ -36,14 +45,5 @@ class Wasteland
   def next_node
     choices = network[current_node]
     next_left?? choices.first : choices.last
-  end
-
-  private
-
-  attr_reader :input, :directions_input, :network_input, :current_node
-
-  def parse_node(node)
-    key, left, right = node.scan(/(\w*) = \((\w*), (\w*)\)/).flatten
-    [key, [left, right]]
   end
 end
