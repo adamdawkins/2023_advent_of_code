@@ -5,6 +5,7 @@ class Wasteland
     @directions_input = @input.first
     @network_input = @input[2..]
     @steps = 0
+    @current_node = "AAA"
   end
 
   def directions
@@ -16,8 +17,6 @@ class Wasteland
   end
 
   def journey
-    current_node = "AAA"
-
     while current_node != "ZZZ" do
       choices = network[current_node]
       current_node = next_left?? choices.first : choices.last
@@ -33,7 +32,7 @@ class Wasteland
 
   private
 
-  attr_reader :input, :directions_input, :network_input
+  attr_reader :input, :directions_input, :network_input, :current_node
 
   def parse_node(node)
     key, left, right = node.scan(/(\w*) = \((\w*), (\w*)\)/).flatten
