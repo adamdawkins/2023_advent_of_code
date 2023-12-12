@@ -32,4 +32,9 @@ class WastelandTest < Minitest::Test
                    "ZZZ" => ["ZZZ", "ZZZ"]}, wasteland.network
                 )
   end
+
+  def test_steps
+    wasteland = Wasteland.new(@input)
+    assert_equal(2, wasteland.journey.steps)
+  end
 end
