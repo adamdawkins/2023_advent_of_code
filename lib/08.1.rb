@@ -17,7 +17,7 @@ class Wasteland
   end
 
   def journey
-    while current_node != "ZZZ" do
+    while still_travelling? do
       choices = network[current_node]
       current_node = next_left?? choices.first : choices.last
       @steps += 1
@@ -28,6 +28,10 @@ class Wasteland
 
   def next_left?
     directions[steps] == :left
+  end
+
+  def still_travelling?
+    current_node != "ZZZ"
   end
 
   private
