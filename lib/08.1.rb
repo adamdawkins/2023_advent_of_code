@@ -20,7 +20,7 @@ class Wasteland
 
     while current_node != "ZZZ" do
       choices = network[current_node]
-      current_node = next_direction == :left ? choices.first : choices.last
+      current_node = next_left?? choices.first : choices.last
       @steps += 1
     end
 
@@ -29,6 +29,10 @@ class Wasteland
 
   def next_direction
     directions[steps]
+  end
+
+  def next_left?
+    next_direction == :left
   end
 
   private
